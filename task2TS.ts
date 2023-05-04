@@ -28,3 +28,4 @@ a.run("runMethodOne", 1);
 a.run("runMethodTwo", null);
 
 //a.run("runMethodsdjhfbs", null); // Type error
+//

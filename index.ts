@@ -10,7 +10,6 @@ const actionMap: EActionMap[] = [
 ];
 
 // TODO Interface
-
 interface IResult {
     0: string;
     1: number;
@@ -25,8 +24,7 @@ const func: IFunc = (id, isActive, callback) => {
         ['name', 123]
     ]
 }
-func(1, true, () => {
-});
+func(1, true, () => {});
 
 // TODO Interface
 interface IItem {
