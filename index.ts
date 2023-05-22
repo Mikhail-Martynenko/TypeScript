@@ -1,25 +1,17 @@
 // TODO Enum
-enum EActionMap {
+enum ActionMap {
     ADD = 'add',
     DELETE = 'delete',
     UPDATE = 'update',
 }
 
-const actionMap: EActionMap[] = [
-    EActionMap.ADD, EActionMap.DELETE, EActionMap.UPDATE
+const actionMap: ActionMap[] = [
+    ActionMap.ADD, ActionMap.DELETE, ActionMap.UPDATE
 ];
 
-// TODO Interface
-interface IResult {
-    0: string;
-    1: number;
-}
+type Result = [string, number]
 
-interface IFunc {
-    (id: number, isActive: boolean, callback: () => void): IResult[];
-}
-
-const func: IFunc = (id, isActive, callback) => {
+const func = (id: number, isActive: boolean, callback: () => void): Result[] => {
     return [
         ['name', 123]
     ]
@@ -27,19 +19,19 @@ const func: IFunc = (id, isActive, callback) => {
 func(1, true, () => {});
 
 // TODO Interface
-interface IItem {
+interface Item {
     id: number;
     name: string;
     items: [] | null;
 }
 
-interface IA {
+interface A {
     id: number;
     name: string;
-    items: IItem[]
+    items: Item[]
 }
 
-const a: IA = {
+const a: A = {
     id: 123,
     name: 'Eric',
     items: [
@@ -56,12 +48,12 @@ const a: IA = {
     ]
 };
 
-interface IObjectN {
+interface ObjectN {
     [key: string]: (number) => string;
 }
 
 // Ключ может оказаться любым. Нужно создать интерфейс, описывающий объект n (типизировать ключи и значения)
-const n: IObjectN = {
+const n: ObjectN = {
     smth: function (number) {
         return 'test';
     },
