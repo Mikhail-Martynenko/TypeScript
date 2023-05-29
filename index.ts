@@ -1,47 +1,33 @@
 // TODO Enum
-enum EActionMap {
+enum ActionMap {
     ADD = 'add',
     DELETE = 'delete',
     UPDATE = 'update',
 }
 
-const actionMap: EActionMap[] = [
-    EActionMap.ADD, EActionMap.DELETE, EActionMap.UPDATE
+const actionMap: ActionMap[] = [
+    ActionMap.ADD, ActionMap.DELETE, ActionMap.UPDATE
 ];
 
-// TODO Interface
+type Result = [string, number]
 
-interface IResult {
-    0: string;
-    1: number;
-}
-
-interface IFunc {
-    (id: number, isActive: boolean, callback: () => void): IResult[];
-}
-
-const func: IFunc = (id, isActive, callback) => {
+const func = (id: number, isActive: boolean, callback: () => void): Result[] => {
     return [
         ['name', 123]
     ]
 }
-func(1, true, () => {
-});
+func(1, true, () => {});
 
 // TODO Interface
-interface IItem {
+interface Item {
     id: number;
     name: string;
-    items: [] | null;
+    items: Item[];
 }
 
-interface IA {
-    id: number;
-    name: string;
-    items: IItem[]
-}
 
-const a: IA = {
+
+const a: Item = {
     id: 123,
     name: 'Eric',
     items: [
@@ -58,12 +44,19 @@ const a: IA = {
     ]
 };
 
-interface IObjectN {
-    [key: string]: (number) => string;
+interface ObjectN {
+    [key: string]: (number) => string; // Если возвращаемое значение всегда "test", то можно вернуть "test" - и это будет рабоать
 }
+//Можно указать вот такой тип:
+//
+// [key: string]: (number) => '${number}'
+//
+// Тогда можно туда передать функцию такого типа:
+//
+// const t = (a: number) => "42"
 
 // Ключ может оказаться любым. Нужно создать интерфейс, описывающий объект n (типизировать ключи и значения)
-const n: IObjectN = {
+const n: ObjectN = {
     smth: function (number) {
         return 'test';
     },

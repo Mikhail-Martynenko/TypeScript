@@ -9,9 +9,9 @@ f("t").z
 
 //2. Реализовать класс SomeClass:
 
-type TSomeClassArgs = Record<string, unknown>;
+type SomeClassArgs = Record<string, unknown>;
 
-class SomeClass<T extends TSomeClassArgs> {
+class SomeClass<T extends SomeClassArgs> {
     run<K extends keyof T>(methodName: K, args: T[K] | null): void {
         console.log(`Called ${String(methodName)} with argument ${args}`);
     }
@@ -28,3 +28,4 @@ a.run("runMethodOne", 1);
 a.run("runMethodTwo", null);
 
 //a.run("runMethodsdjhfbs", null); // Type error
+//
