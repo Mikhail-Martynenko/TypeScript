@@ -22,16 +22,12 @@ func(1, true, () => {});
 interface Item {
     id: number;
     name: string;
-    items: [] | null;
+    items: Item[];
 }
 
-interface A {
-    id: number;
-    name: string;
-    items: Item[]
-}
 
-const a: A = {
+
+const a: Item = {
     id: 123,
     name: 'Eric',
     items: [
@@ -49,8 +45,15 @@ const a: A = {
 };
 
 interface ObjectN {
-    [key: string]: (number) => string;
+    [key: string]: (number) => string; // Если возвращаемое значение всегда "test", то можно вернуть "test" - и это будет рабоать
 }
+//Можно указать вот такой тип:
+//
+// [key: string]: (number) => '${number}'
+//
+// Тогда можно туда передать функцию такого типа:
+//
+// const t = (a: number) => "42"
 
 // Ключ может оказаться любым. Нужно создать интерфейс, описывающий объект n (типизировать ключи и значения)
 const n: ObjectN = {
